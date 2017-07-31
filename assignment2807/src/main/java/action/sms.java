@@ -13,7 +13,7 @@ public class sms extends Actions{
         Iterator i = set.iterator();
 		
 		while(i.hasNext()){
-			Map.Entry me = ((Map.Entry)i.next());
+			Map.Entry me = (Map.Entry)i.next();
 			System.out.println("Sending "+ me.getKey() +" to " + me.getValue());
 	}
 	}

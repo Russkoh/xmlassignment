@@ -24,14 +24,16 @@ public class LibException implements Comparable<Object> {
 	public void setExceptionName(String exceptionName) {
 		this.exceptionName = exceptionName;
 	}
+	
+	
 	public int compareTo(Object o) {
 		LibException ol = (LibException) o; 
-		//System.out.println("project name "+this.getProjectName().compareTo(ol.getProjectName()));
+		
 		if(this.getProjectName().compareTo(ol.getProjectName())==0){
 			
-			//System.out.println("mod name "+ this.getModuleName().compareTo(ol.getModuleName()));
+
 			if(this.getModuleName().compareTo(ol.getModuleName()) == 0){
-				//System.out.println(" exception name "+this.getExceptionName().compareTo(ol.getExceptionName()));
+
 				if(this.getExceptionName().compareTo(ol.getExceptionName())==0){
 					
 					return 0;

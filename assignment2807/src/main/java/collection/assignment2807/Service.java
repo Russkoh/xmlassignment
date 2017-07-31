@@ -1,7 +1,6 @@
 package collection.assignment2807;
 
 import java.io.File;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,7 +20,7 @@ import pojo.ActionList;
 
 
 public class Service implements IService{
-	static Map<LibException, Map<Integer,ActionList>> la = new HashMap<LibException,Map<Integer, ActionList>>();
+	static Map<LibException, Map<Integer,ActionList>> la = new HashMap<>();
 	public Service() {
 		super();
 		init();
@@ -52,13 +51,13 @@ public class Service implements IService{
 	            Node eNode = eList.item(temp3);
 	            if (eNode.getNodeType() == Node.ELEMENT_NODE) {
 	                Element exElement = (Element) eNode;
-	                Element aeElement = (Element) aNode;
+	                
 	                //Save exceptions
 	                
 	                le.setExceptionName(exElement.getAttribute("type"));
 	                le.setModuleName(((Element)exElement.getParentNode()).getAttribute("name"));
 	                le.setProjectName(((Element)(exElement.getParentNode().getParentNode())).getAttribute("name"));
-	                //System.out.println(((Element)exElement.getParentNode()).getAttribute("name") + " module");
+	                
 		          }
 	           
 	            	la.put(le, storeChildActions(aNode));
@@ -75,12 +74,11 @@ public class Service implements IService{
 		 Element aeElement = (Element) aNode;
 		 
 		 Map<String, String> attMap = new HashMap<String, String>();
-		// System.out.println( aNode.getChildNodes().getLength());
+
          for (int temp5 = 0; temp5 < aNode.getChildNodes().getLength(); temp5++) {
          	
 	          if(temp5%2==1){
-	        	 // System.out.println("action : " 
-		           //        + aeElement.getChildNodes().item(temp5).getNodeName()+" "+ aeElement.getChildNodes().item(temp5).getAttributes().item(0).getNodeValue());
+	        	 
 		                attMap.put(aeElement.getChildNodes().item(temp5).getNodeName(), aeElement.getChildNodes().item(temp5).getAttributes().item(0).getNodeValue());
 	          }
 	         
@@ -119,7 +117,7 @@ public class Service implements IService{
 		
 		return findException(le2);
 		
-		//return null;
+
 	}
 
 	String findException(LibException le2){
@@ -127,10 +125,10 @@ public class Service implements IService{
 		Set set = la.entrySet();
         Iterator i = set.iterator();
 		String ans= "";
-		ActionList ansl = null;
+
 		while(i.hasNext()){
 			
-			Map.Entry me = ((Map.Entry)i.next());
+			Map.Entry me = (Map.Entry)i.next();
 		
 			if(le2.compareTo(me.getKey())== 0){
 				
@@ -141,7 +139,7 @@ public class Service implements IService{
 				Iterator j = alSet.iterator();
 				while(j.hasNext()){
 					Map.Entry alme = ((Map.Entry)j.next());
-					//System.out.println(alme.getKey().toString() + alme.getValue().toString());
+
 					ans = alme.getKey().toString();
 					
 					
@@ -157,32 +155,39 @@ public class Service implements IService{
         
 		while(i2.hasNext()){
 			
-			Map.Entry me = ((Map.Entry)i2.next());
+			Map.Entry me = (Map.Entry)i2.next();
 		if(le2.getProjectName().compareTo(((LibException)me.getKey()).getProjectName())==0){
 			ans = "";
 			break;
 		}
-		ans = "Invalid Project Name";}
+		ans = "Invalid Project Name";
+		}
 		if(ans ==""){
 		Set set3 = la.entrySet();
         Iterator i3 = set3.iterator();
 		while(i3.hasNext()){
-			Map.Entry me = ((Map.Entry)i3.next());
+			Map.Entry me = (Map.Entry)i3.next();
 		if(le2.getModuleName().compareTo(((LibException)me.getKey()).getModuleName())==0){
 			ans = "";
 			break;
 			
-		}ans = "Invalid Module Name";}}
+		}
+		ans = "Invalid Module Name";
+		}
+		}
 		if(ans ==""){
 		Set set4 = la.entrySet();
         Iterator i4 = set4.iterator();
 		while(i4.hasNext()){
 			
-			Map.Entry me = ((Map.Entry)i4.next());
+			Map.Entry me = (Map.Entry)i4.next();
 		if(le2.getExceptionName().compareTo(((LibException)me.getKey()).getExceptionName())==0){
 			ans = "";
 			break;
-		}ans = "Invalid Exception Name";}}
+		}
+		ans = "Invalid Exception Name";
+		}
+		}
 		return ans;
 	}
 	private void factoryDesignSolution(String name,ActionList ac) {
@@ -207,7 +212,7 @@ public class Service implements IService{
 	}
 
 	public String getExceptionName(Exception ex){
-		//System.out.println("Exception name "+ ex.getClass().getSimpleName());
+
 		return ex.getClass().getSimpleName();
 		
 	}
