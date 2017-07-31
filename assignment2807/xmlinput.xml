@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<bank>
+   <project name="bank">
+      <module name="withdraw">
+      	<exception type="SQLException">
+      		<action>
+      			<email at="russell"/>
+      			<sms to="85225229"/>
+      		</action>
+      	
+      	</exception>
+      	<exception type="FNFException">
+      		<action>
+      			<email at="mike"/>
+      			<sms to="192837121947"/>
+      		</action>
+      	</exception>
+      
+      </module>
+      <module name="deposit">
+      	<exception type="IOException">
+      		<action>
+      			<email to="Sagar"/>
+      			<sms to="1238705701"/>
+      		</action>
+      	
+      	</exception>
+      	<exception type="ClassException">
+      		<action>
+      			<email to="Han"/>
+      			<sms to="6812394705701"/>
+      		</action>
+      	
+      	</exception>
+      </module>
+   </project>
+   <project name="server">
+      <module name="repo">
+      	<exception type="SQLException">
+      		<action>
+      			<email to="russell"/>
+      			<sms to="85225229"/>
+      		</action>
+      	
+      	</exception>
+      	<exception type="ArrayIndexOutOfBoundsException">
+      		<action>
+      			<email to="Chee Yang"/>
+      			<sms to="61273469"/>
+      		</action>
+      	
+      	</exception>
+      
+      </module>
+      <module name="serving">
+      	<exception type="FileNotFoundException">
+      		<action>
+      			<email to="ITHelp"/>
+      			<sms to="12389741"/>
+      		</action>
+      	</exception>
+      	<exception type="NullPointerException">
+      		<action>
+      			<email to="Kenji"/>
+      			<sms to="40727834701"/>
+      		</action>
+      	</exception>
+      </module>
+   </project>
+</bank>
